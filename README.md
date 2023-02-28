@@ -1,2 +1,13 @@
 # react-vitejs-template
 React and Vite template to build a react app easily.
+
+## Conventional commits enforcement
+To enforce conventional commits, this template use :
+### - Commitlint : 
+A linting tool to check if your commit messages meet the conventional commit format.
+
+### - Husky : 
+A handy git hook helper, to check your commit message before making any git commit.
+
+### - Commitizen :
+A CLI tool to help us fill out any required commit fields at commit time.
