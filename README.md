@@ -17,3 +17,7 @@ Resources :
 https://dev.to/davipon/add-commitint-commitizen-standard-version-and-husky-to-sveltekit-project-14pc
 
 https://rahulgurung.com/How-to-use-the-latest-Husky-8-with-Commitizen-for-adding-git-hooks-to-your-projects/
+
+## Absolute import :
+
+Make an absolute import to improve code. Source https://dev.to/abdeldjalilhachimi/how-to-avoid-long-path-import-using-react-with-ts-and-vite-4e2h
