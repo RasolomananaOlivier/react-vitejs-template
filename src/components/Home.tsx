@@ -6,13 +6,20 @@ const posts = [
   { id: "3", title: "Post 3" },
 ];
 
+const getPosts = async () => {
+  return await wait(1000).then(() => [...posts]);
+};
+
+const postsQueryConfig = {
+  queryKey: ["posts"],
+  queryFn: getPosts,
+};
+
 const Home = () => {
   const clientQuery = useQueryClient();
 
-  const postsQuery = useQuery({
-    queryKey: ["posts"],
-    queryFn: () => wait(1000).then(() => [...posts]),
-  });
+  const postsQuery = useQuery(postsQueryConfig);
+
   const newPostMutation = useMutation({
     mutationFn: (title: string) =>
       wait(1000).then(() => posts.push({ id: crypto.randomUUID(), title })),
