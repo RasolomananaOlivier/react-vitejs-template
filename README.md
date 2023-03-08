@@ -1,7 +1,7 @@
 # Structuration du code en React.
 
 Créé par: Rasolomanana herimanitra Olivier
-Dernière modification: 7 mars 2023 10:52
+Dernière modification: 8 mars 2023 13:15
 Dernière modification par: Rasolomanana herimanitra Olivier
 Heure de création: 6 mars 2023 22:04
 Étiquettes: documentation
@@ -9,15 +9,6 @@ Heure de création: 6 mars 2023 22:04
 # Structuration du code en React
 
 La structuration basée sur les fonctionnalités est une approche de structuration du code qui organise les fichiers en fonction des fonctionnalités de l'application plutôt que des types de fichiers (tels que les composants, les services, les tests, etc.). Cette approche permet de regrouper le code lié à une fonctionnalité spécifique en un seul endroit, ce qui facilite la lecture, la compréhension et la maintenance du code.
-
-## Pourquoi utiliser TypeScript pour un project React ?
-
-Il y a plusieurs avantages à utiliser TypeScript au lieu de JavaScript dans un projet React :
-
-1. TypeScript est un langage typé, ce qui signifie que l'on peut spécifier le type de chaque variable et de chaque fonction. Cela permet de détecter plus facilement les erreurs de typage à la compilation plutôt qu'à l'exécution, ce qui rend le code plus robuste et moins sujet aux bugs.
-2. TypeScript offre une meilleure autocomplétion et une meilleure documentation du code grâce aux types. Les IDE peuvent ainsi fournir des suggestions de code plus précises et les développeurs peuvent facilement comprendre le type des données manipulées dans le code.
-3. TypeScript est compatible avec les bibliothèques et les outils existants de JavaScript, y compris React. Cela signifie que l'on peut utiliser les mêmes outils et bibliothèques que pour un projet JavaScript, tout en bénéficiant des avantages de TypeScript.
-4. TypeScript offre également une meilleure maintenabilité du code. En effet, la typage permet de mieux comprendre la structure du code et de faciliter la refacturation. De plus, le compilateur TypeScript offre de nombreuses vérifications de code qui permettent de détecter rapidement les erreurs potentielles et de maintenir un code de qualité.
 
 ## Vue d’ensemble de la structure du code
 
@@ -39,6 +30,20 @@ src/
 ├── main.ts
 └── ...
 ```
+
+Liens des dossiers :
+
+- [Assets ](https://www.notion.so/Assets-c828dacbf29a46809fc315f0f73969fd)
+- [Constants](https://www.notion.so/Constants-d3c8f218128c4d869059ce1b8e70942f)
+- [Hooks](https://www.notion.so/Hooks-d04ba1c14aba4a63bffe1b452b00f73f)
+- [Lib](https://www.notion.so/Lib-7926e87994724013af161db6a2ed332b)
+- [Utils](https://www.notion.so/Utils-075e14938ce34646b55d11592113e4d8)
+- [Components](https://www.notion.so/Components-9d5c4b14c3c74c7aac5e983ee20c7f0b)
+- [Layouts](https://www.notion.so/Layouts-b2ce4b6ca4a0414cb8710ea0195c2556)
+- [Features](https://www.notion.so/Features-1196f8ceed604982a36e8041ed28f79d)
+- [Pages](https://www.notion.so/Pages-ce9546add48d4b1cba1375211b7bcef0)
+- [Redux](https://www.notion.so/Redux-057a3006edab4f4fbc48449284fca41d)
+- [Services](https://www.notion.so/Services-3544bbea2f664b54bd3ebeefe3201305)
 
 ## Assets
 
@@ -71,7 +76,7 @@ constants/
 
 ## Hooks
 
-Dans le dossier "hooks", vous pouvez stocker tous les hooks personnalisés de l’application. Vous pouvez organiser ces hooks en fonction de leur rôle dans l'application. Par exemple, vous pouvez avoir un hook pour gérer l'authentification des utilisateurs, un hook pour gérer la pagination des données, un hook pour gérer les formulaires, etc. Seuls les hooks qui seront utilisés globalement doivent être stockés dans ce dossier.
+Dans le dossier "hooks" se trouve tous les hooks personnalisés de l’application. Vous pouvez organiser ces hooks en fonction de leur rôle dans l'application. Par exemple, vous pouvez avoir un hook pour gérer l'authentification des utilisateurs, un hook pour gérer la pagination des données, un hook pour gérer les formulaires, etc.
 
 ```csharp
 hooks/
@@ -83,6 +88,39 @@ hooks/
 
 > Seuls les hooks qui sont susceptibles d'être utilisés dans toute l'application doivent être stockés dans ce dossier. Les hooks spécifiques à une fonctionnalité doivent être placés dans le dossier correspondant.
 > 
+
+## Lib
+
+Le dossier **`lib`**est utilisé pour stocker des fonctions qui encapsulent les fonctionnalités de librairies tierces utilisées par l'application.
+
+```csharp
+lib/
+├── Client.ts
+├── firebase.ts
+└── ...
+```
+
+### Exemple `Client.ts`
+
+```tsx
+import { baseURL } from "@/constants/baseUrl";
+import axios from "axios";
+
+const Client = axios.create({ baseURL });
+export default Client;
+```
+
+## Utils
+
+Le dossier **`utils`** est utilisé pour stocker des fonctions utilitaires qui peuvent être utilisées dans toute l'application. Ces fonctions peuvent effectuer des tâches telles que la validation de données, la gestion des erreurs, la manipulation de dates, etc. En regroupant ces fonctions dans un dossier **`utils`**, il est plus facile de les réutiliser dans différents composants, pages ou fonctionnalités.
+
+```csharp
+utils/
+├── dateUtils.ts
+├── errorHandler.ts
+├── validation.ts
+└── ...
+```
 
 ## Components
 
@@ -132,7 +170,7 @@ Dans ce fichier, on définit simplement le type **`ButtonProps`** qui est utilis
 import React from 'react';
 import { ButtonProps } from './types';
 
-const Button: React.FC<ButtonProps> = ({ children, onClick, disabled = false, className = " }) => {
+const Button: React.FC<ButtonProps> = ({ children, onClick, disabled = false, className = "" }) => {
   return (
     <button
       className={`button ${className}`}
@@ -150,6 +188,7 @@ export default Button;
 - Exportation et utilisation du composant dans d’autres fichiers:
 
 ```tsx
+// components/Button/index.ts
 export { default } from './Button';
 export * from './types';
 ```
@@ -231,29 +270,6 @@ const HomePage = () => {
 };
 
 export default HomePage;
-```
-
-## Lib
-
-Le dossier **`lib`**est utilisé pour stocker des fonctions qui encapsulent les fonctionnalités de librairies tierces utilisées par l'application.
-
-```csharp
-lib/
-├── client.ts
-├── firebase
-└── ...
-```
-
-## Utils
-
-Le dossier **`utils`** est utilisé pour stocker des fonctions utilitaires qui peuvent être utilisées dans toute l'application. Ces fonctions peuvent effectuer des tâches telles que la validation de données, la gestion des erreurs, la manipulation de dates, etc. En regroupant ces fonctions dans un dossier **`utils`**, il est plus facile de les réutiliser dans différents composants, pages ou fonctionnalités.
-
-```csharp
-utils/
-├── dateUtils.ts
-├── errorHandler.ts
-├── validation.ts
-└── ...
 ```
 
 ## Features
@@ -401,8 +417,7 @@ export const { setUser, clearUser } = userSlice.actions;
 export default userSlice.reducer;
 ```
 
-Dans cet exemple, nous avons créé un **`userSlice`**
- avec un état initial qui contient l'id, le nom et l'e-mail de l'utilisateur. Ensuite, nous avons créé deux actions **`setUser`** et **`clearUser`** qui mettent à jour l'état en fonction de la nouvelle valeur passée en tant que **`payload`**. Nous avons également créé un sélecteur **`selectUser`**
+Dans cet exemple, nous avons créé un **`userSlice`** avec un état initial qui contient l'id, le nom et l'e-mail de l'utilisateur. Ensuite, nous avons créé deux actions **`setUser`** et **`clearUser`** qui mettent à jour l'état en fonction de la nouvelle valeur passée en tant que **`payload`**. Nous avons également créé un sélecteur **`selectUser`**
  qui permet de sélectionner l'état de l'utilisateur à partir du **`RootState`**. Enfin, nous avons exporté les actions et le réducteur par défaut (**`userSlice.reducer`**).
 
 - Configuration du `selector`
@@ -420,3 +435,86 @@ export const selectUserEmail = (state: RootState) => state.user.email;
 Dans cet exemple, nous importons le type **`RootState`** qui est le type global de l'état de l'application, qui est défini dans le fichier **`store.ts`**. Nous exportons ensuite différentes fonctions sélectrices qui permettent d'accéder aux données stockées dans le **`userSlice`**.
 
 La première fonction **`selectUser`** retourne l'ensemble des données stockées dans le **`userSlice`**, tandis que les deux autres fonctions **`selectUserName`** et **`selectUserEmail`** retournent respectivement le nom et l'email de l'utilisateur.
+
+Ces fonctions peuvent ensuite être utilisées dans les composants React pour accéder aux données du **`userSlice`**.
+
+## Services
+
+Ce dossier servira à contenir les `api` call dans toute l’application.
+
+```tsx
+services/
+├── api/
+│   ├── userApi.ts
+│   ├── ...
+│   └── index.ts
+└── endpoints.ts
+```
+
+Le fichier `userApi.ts` contiendrait le code pour appeler l'API qui gère les utilisateurs, tandis que les autres fichiers dans le sous-dossier `api` pourraient contenir des codes pour appeler d'autres API. Le fichier `index.ts` serait utilisé pour exporter toutes les fonctions/APIs contenues dans le dossier `api`, ce qui permettrait à d'autres fichiers dans l'application de les importer et de les utiliser.
+
+### Endpoints.ts
+
+```tsx
+export const ENDPOINTS = {
+  // user resources
+  GET_USERS: "/users",
+  GET_USER: "/users/:id",
+  CREATE_USER: "/users",
+  UPDATE_USER: "/users/:id",
+  DELETE_USER: "/users/:id",
+
+  // other resources
+  // ...
+};
+```
+
+L'utilisation de cet objet **`ENDPOINTS`** permet de centraliser toutes les URL de l'API dans un seul fichier, ce qui facilite la gestion des URL en cas de changement de l'API. Il est également plus facile d'utiliser ces constantes dans notre code plutôt que de saisir manuellement les URL, car nous pouvons simplement importer cet objet **`ENDPOINTS`** et utiliser les constantes associées à l'endpoint souhaité.
+
+### Exemple de l’api `userApi`
+
+```tsx
+import Client from "@/lib/Client";
+import { ENDPOINTS } from "../endpoints";
+
+export const getUsers = async () => {
+  try {
+    const response = await Client.get(ENDPOINTS.GET_USERS);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to fetch users data.");
+  }
+};
+
+export const getUser = async (id: string) => {
+  try {
+    const response = await Client.get(ENDPOINTS.GET_USER.replace(":id", id));
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to fetch user data.");
+  }
+};
+```
+
+### Exportation des fichiers api `services/api/index.ts`
+
+```tsx
+import { getUsers, getUser } from "./userApi";
+
+export const api = {
+  user: {
+    getUsers,
+		getUser
+  },
+};
+
+export default api;
+```
+
+Dans cet exemple, nous importons les fonctions **`getUsers`** et `getUser` depuis le fichier **`userApi.ts`** et nous exportons un objet nommé **`api`** qui contient une clé **`user`**. La clé **`user`** a une valeur qui est un objet contenant la fonction **`fetchUser`**.
+
+L'export par défaut de **`api`** permet à d'autres fichiers de l'importer facilement en utilisant la syntaxe **`import api from './api'`**. De cette façon, d'autres parties de l'application peuvent utiliser les fonctions contenues dans ce fichier en appelant **`api.user.fetchUser()`**, par exemple.
+
+En utilisant cette structure, nous avons une organisation claire et facile à comprendre de toutes les fonctions API. Si nous devons ajouter d'autres fonctions API, nous pouvons simplement les ajouter comme des clés à l'objet **`api`** et les exporter avec l'export par défaut.
