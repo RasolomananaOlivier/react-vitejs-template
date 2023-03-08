@@ -5,9 +5,9 @@ import { Provider } from "react-redux";
 import { theme } from "@/constants/theme";
 import { store } from "@/redux/store";
 
-interface AppProvidersProps extends PropsWithChildren {}
+interface ProvidersProps extends PropsWithChildren {}
 
-const AppProviders: React.FC<AppProvidersProps> = ({ children }) => {
+const Providers: React.FC<ProvidersProps> = ({ children }) => {
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
@@ -15,4 +15,4 @@ const AppProviders: React.FC<AppProvidersProps> = ({ children }) => {
   );
 };
 
-export default AppProviders;
+export default Providers;

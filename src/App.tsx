@@ -1,11 +1,11 @@
-import AppProvider from "./components/Providers";
-import AppRoutes from "./components/Routes";
+import Providers from "./components/Providers";
+import Routes from "./components/Routes";
 
 function App() {
   return (
-    <AppProvider>
-      <AppRoutes />
-    </AppProvider>
+    <Providers>
+      <Routes />
+    </Providers>
   );
 }
 

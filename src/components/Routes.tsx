@@ -1,11 +1,11 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes as RouteContainer } from "react-router-dom";
 
-const AppRoutes = () => {
+const Routes = () => {
   return (
-    <Routes>
+    <RouteContainer>
       <Route path="/" element={<div>Home page</div>} />
-    </Routes>
+    </RouteContainer>
   );
 };
 
-export default AppRoutes;
+export default Routes;
