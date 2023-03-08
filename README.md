@@ -420,5 +420,3 @@ export const selectUserEmail = (state: RootState) => state.user.email;
 Dans cet exemple, nous importons le type **`RootState`** qui est le type global de l'état de l'application, qui est défini dans le fichier **`store.ts`**. Nous exportons ensuite différentes fonctions sélectrices qui permettent d'accéder aux données stockées dans le **`userSlice`**.
 
 La première fonction **`selectUser`** retourne l'ensemble des données stockées dans le **`userSlice`**, tandis que les deux autres fonctions **`selectUserName`** et **`selectUserEmail`** retournent respectivement le nom et l'email de l'utilisateur.
-
-Ces fonctions peuvent ensuite être utilisées dans les composants React pour accéder aux données du **`userSlice`**.
