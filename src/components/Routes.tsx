@@ -1,9 +1,12 @@
+import ROUTES from "@/constants/routesData";
 import { Route, Routes as RouteContainer } from "react-router-dom";
 
 const Routes = () => {
   return (
     <RouteContainer>
-      <Route path="/" element={<div>Home page</div>} />
+      {ROUTES.map(({ element, path, title }) => (
+        <Route key={title} path={path} element={element} />
+      ))}
     </RouteContainer>
   );
 };
