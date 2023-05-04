@@ -1,13 +1,13 @@
-import ROUTES from "@/constants/routesData";
-import { Route, Routes as RouteContainer } from "react-router-dom";
+import { Route, Routes as ReactRoutes, useLocation } from "react-router-dom";
+import Home from "./Home";
 
 const Routes = () => {
+  const location = useLocation();
+
   return (
-    <RouteContainer>
-      {ROUTES.map(({ element, path, title }) => (
-        <Route key={title} path={path} element={element} />
-      ))}
-    </RouteContainer>
+    <ReactRoutes location={location} key={location.key}>
+      <Route path="/" element={<Home />} />
+    </ReactRoutes>
   );
 };
 
