@@ -1,12 +1,11 @@
-import { useState } from "react";
-import { AppNavigation } from "./components/AppNavigation";
-import AppProvider from "./components/AppProvider";
+import Providers from "./components/Providers";
+import { Routes } from "./components/Routes";
 
 function App() {
   return (
-    <AppProvider>
-      <AppNavigation />
-    </AppProvider>
+    <Providers>
+      <Routes />
+    </Providers>
   );
 }
 

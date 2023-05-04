@@ -7,8 +7,6 @@ import { store } from "@/redux/store";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
-interface IAppProviderProps {}
-
 const clientQuery = new QueryClient({
   defaultOptions: {
     queries: {
@@ -20,7 +18,7 @@ const clientQuery = new QueryClient({
   },
 });
 
-const AppProvider = ({ children }: PropsWithChildren<IAppProviderProps>) => {
+const Providers = ({ children }: PropsWithChildren) => {
   return (
     <QueryClientProvider client={clientQuery}>
       <Provider store={store}>
@@ -31,4 +29,4 @@ const AppProvider = ({ children }: PropsWithChildren<IAppProviderProps>) => {
   );
 };
 
-export default AppProvider;
+export default Providers;
